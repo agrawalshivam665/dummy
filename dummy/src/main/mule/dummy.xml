@@ -10,6 +10,5 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<flow name="dummyFlow" doc:id="c3319130-ca36-4d6a-8615-8fb8876292f3" >
 		<http:listener doc:name="Listener" doc:id="6a624b19-6c4f-4406-b7e1-a9e56bcc0f6c" config-ref="HTTP_Listener_config" path="/dummy"/>
 		<set-payload value='#["Hello Git hub"]' doc:name="Set Payload" doc:id="a74e2b6e-e6a4-481d-99bb-a0b07a5c7470" />
-		<logger level="INFO" doc:name="Logger" doc:id="bb8b1c18-8aa1-4c7a-af5c-45f0b8a6b3fc" message="#[payload]"/>
 	</flow>
 </mule>

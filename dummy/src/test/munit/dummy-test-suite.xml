@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="dummy-test-suite.xml" />
+	<munit:test name="dummy-test-suite-dummyFlowTest" doc:id="326850ad-2a36-4870-8847-dd1796b84cda" description="Test">
+		<munit:execution >
+			<munit:set-null-payload doc:name="Set null payload" doc:id="ac5891f2-edce-4c26-a746-30a9fe020457" />
+			<flow-ref doc:name="Flow-ref to dummyFlow" doc:id="cfa82f7c-36b5-4525-940a-05aacc36c004" name="dummyFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="56a037c3-1bdb-4dfc-ac5d-f66c52f7e55a" actual="#[payload]" expected='#["Hello Git hub"]' message="Some error"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="dummy-test-suite-dummyFlowTest1" doc:id="f4151ef8-a6b3-4036-9671-9bec7904d1f4" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to dummyFlow" doc:id="9da997a8-db60-4c82-a49d-18961e14d5ee" name="dummyFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="c2c100fe-882f-4fc4-96ef-029a45a539a5" message="Null" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="dummy-test-suite-dummyFlowTest2" doc:id="c498fa9f-4358-431d-af33-3f15bc7efd25" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to dummyFlow" doc:id="0bd3ef21-74b4-4295-97d4-a5a48f3c3c6b" name="dummyFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="578531ed-a1e2-42eb-87a4-cea25f79da38" expression="#[payload]" is="#[MunitTools::startsWith('Hello')]" message="Not start with Hello"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
